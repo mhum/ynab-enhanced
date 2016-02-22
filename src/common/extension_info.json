@@ -1,6 +1,6 @@
 {
-    "name": "YNAB Enhanced",
-    "version": "0.3.0",
+    "name": "Toolkit for YNAB",
+    "version": "0.3.7",
     "creator": "Open Source Community",
     "description": "UI customisations and tweaks for the web version of YNAB.",
     "homepage_url": "https://github.com/blargity/ynab-enhanced/",
@@ -11,19 +11,19 @@
 
     "browser_button": {
         "icon": "icons/button.png",
-        "tooltipText": "YNAB Enhanced",
-        "caption": "YNAB Enhanced"
+        "tooltipText": "Toolkit for YNAB",
+        "caption": "Toolkit for YNAB"
     },
 
     "options_page": "options.html",
 
     "permissions": {
         "content_scripts": ["http://*.youneedabudget.com/*", "https://*.youneedabudget.com/*"],
-        "tabs": true,
-        "context_menu": true,
+        "tabs": false,
+        "context_menu": false,
         "web_navigation": false,
         "notifications": false,
-        "cookies": true,
+        "cookies": false,
         "xhr": ["http://*.youneedabudget.com/*", "https://*.youneedabudget.com/*"]
     }
 }

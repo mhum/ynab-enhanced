@@ -1,0 +1,9 @@
+.budget-table-cell-budgeted {
+	position: relative;
+}
+
+.goal-indicator {
+	position: absolute;
+	color: gray;
+	font-size: 80%;
+}

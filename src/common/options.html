@@ -1,142 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-  <title>YNAB Enhanced Options</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toolkit for YNAB Options</title>
 
-  <style>
-    body {
-      padding: 10px;
-    }
-
-    div.option {
-      padding: 6px;
-    }
-
-    .save {
-      margin-top: 10px;
-    }
-  </style>
-  <script type="text/javascript" src="kango-ui/kango_api.js"></script>
+  <link href="assets/dream-admin-theme/css/bootstrap.css" rel="stylesheet" />
+  <link href="assets/dream-admin-theme/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="assets/dream-admin-theme/css/custom-styles.css" rel="stylesheet" />
+  <link href="assets/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet" />
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <link href="options.css" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="option">
-    <label><input type="checkbox" id="collapseSideMenu" name="collapseSideMenu">Collapsible Side Menu</label>
+  <div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+      <div class="navbar-header">
+        <img src="#" id="logo" alt="Tookit for YNAB" />
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+      <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+          <li>
+            <a href="#" id="generalMenuItem"><i class="fa fa-cogs"></i> General</a>
+          </li>
+          <li>
+            <a href="#" id="accountsMenuItem"><i class="fa fa-university"></i> Accounts Screen</a>
+          </li>
+          <li>
+            <a href="#" id="budgetMenuItem"><i class="fa fa-envelope-o"></i> Budget Screen</a>
+          </li>
+        </ul>
+
+        <div class="options">
+          <input type="checkbox" name="darkMode" id="darkMode"> <span>Dark Mode</span>
+        </div>
+      </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+
+    <div id="page-wrapper">
+      <div id="page-inner">
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <!-- ======= GENERAL SETTINGS ======= -->
+            <div id="generalSettingsPage" class="settingsPage">
+
+              <h2 class="page-header">
+                <i class="fa fa-cogs"></i> General Settings
+              </h2>
+
+              <div class="col-xs-4 col-xs-offset-8 page-header-buttons">
+                <button class="btn btn-lg btn-primary pull-right save-button">Save</button>
+                <button class="btn btn-lg pull-right cancel-button">Cancel</button>
+              </div>
+
+            </div>
+
+            <!-- ======= ACCOUNTS SETTINGS ======= -->
+            <div id="accountsSettingsPage" class="settingsPage">
+
+              <h2 class="page-header">
+                <i class="fa fa-university"></i> Accounts Screen Settings
+              </h2>
+
+              <div class="col-xs-4 col-xs-offset-8 page-header-buttons">
+                <button class="btn btn-lg btn-primary pull-right save-button">Save</button>
+                <button class="btn btn-lg pull-right cancel-button">Cancel</button>
+              </div>
+
+            </div>
+
+            <!-- ======= BUDGET SETTINGS ======= -->
+            <div id="budgetSettingsPage" class="settingsPage">
+
+              <h2 class="page-header">
+                <i class="fa fa-envelope-o"></i> Budget Screen Settings
+              </h2>
+
+              <div class="col-xs-4 col-xs-offset-8 page-header-buttons">
+                <button class="btn btn-lg btn-primary pull-right save-button">Save</button>
+                <button class="btn btn-lg pull-right cancel-button">Cancel</button>
+              </div>
+
+            </div>
+
+            <div id="settingsSaved" class="col-xs-11 alert alert-success" style="display:none">
+              Settings successfully saved! Please reload YNAB to use them.
+            </div>
+
+            <div class="col-xs-4 col-xs-offset-8">
+              <button class="btn btn-lg btn-primary pull-right save-button">Save</button>
+              <button class="btn btn-lg pull-right cancel-button">Cancel</button>
+            </div>
+
+
+          </div>
+        </div>
+        <!-- /. ROW  -->
+      </div>
+      <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
   </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="colourBlindMode" name="colourBlindMode">Colour Blind Mode</label>
-  </div>
-
-  <div class="option">
-    <label title="Highlight credit category balances with yellow warning highlight if it does not match account balance."><input type="checkbox" id="checkCreditBalances" name="checkCreditBalances">Credit payment category warnings</label>
-  </div>
-
-  <div class="option">
-    <label title="Ensure all negative balances are highlighted red instead of yellow, even with credit card spending."><input type="checkbox" id="highlightNegativesNegative" name="highlightNegativesNegative">Highlight all negative category balances red</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="collapseExpandBudgetGroups" name="collapseExpandBudgetGroups">Expand/Collapse budget master categories button</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="hideAOM" name="hideAOM">Hide Age of Money Calculation</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="enableRetroCalculator" name="enableRetroCalculator">Make the calculator work like YNAB4</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="removeZeroCategories" name="removeZeroCategories">Remove zero categories when cover overbudgeting</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="moveMoneyDialog" name="moveMoneyDialog">Make the Move money dialog larger</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="moveMoneyAutocomplete" name="moveMoneyAutocomplete">Enable autocomplete for the Move money dialog</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="toggleSplits" name="toggleSplits">Enable visibility toggling of split transactions</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="accountsSelectedTotal" name="accountsSelectedTotal">Show the total of selected transactions in the account view</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="changeEnterBehavior" name="changeEnterBehavior">Change behavior of enter key when adding transactions.</label>
-  </div>
-
-  <div class="option">
-    <label><input type="checkbox" id="transferJump" name="transferJump">Enable ability to jump to the other side of a transfer</label>
-  </div>
-
-  <div class="option">
-    <label>
-        Height of budget rows
-        <select name="budgetRowsHeight" id="budgetRowsHeight">
-            <option value="0">Default</option>
-            <option value="1">Compact</option>
-            <option value="2">Slim</option>
-        </select>
-    </label>
-  </div>
-
-  <div class="option">
-    <label>
-        Width of category popup
-        <select name="categoryActivityPopupWidth" id="categoryActivityPopupWidth">
-            <option value="0">Default</option>
-            <option value="1">Medium</option>
-            <option value="2">Large</option>
-        </select>
-    </label>
-  </div>
-
-  <div class="option">
-    <label>
-        Reconciled text color
-        <select name="reconciledTextColor" id="reconciledTextColor">
-            <option value="0">Default</option>
-            <option value="1" style="color: #00661d">Green</option>
-            <option value="2" style="color: #cfd5d7">Light Gray</option>
-            <option value="3" style="color: #8e9fb0">Dark Gray</option>
-            <option value="4" style="color: #8e9fb0; background-color: #e7faeb">Any chance</option>
-        </select>
-    </label>
-  </div>
-
-  <div class="option">
-    <label>
-        Accounts display density
-        <select name="accountsDisplayDensity" id="accountsDisplayDensity">
-            <option value="0">Default</option>
-            <option value="1">Compact</option>
-            <option value="2">Slim</option>
-        </select>
-    </label>
-  </div>
-
-  <div class="option">
-    <label>
-      Edit account button position
-      <select name="editButtonPosition" id="editButtonPosition">
-        <option value="0">Default</option>
-        <option value="1">Left of name</option>
-        <option value="2">Hidden (use right-click)</option>
-      </select>
-    </label>
-  </div>
-
-  <div id="status"></div>
-
-  <button id="save" class="save">Save</button>
-
-  <script src="options.js"></script>
+  <!-- /. WRAPPER  -->
+  <!-- JS Scripts-->
+  <script type="text/javascript" src="assets/dream-admin-theme/js/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="assets/dream-admin-theme/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="assets/dream-admin-theme/js/jquery.metisMenu.js"></script>
+  <script type="text/javascript" src="assets/dream-admin-theme/js/custom-scripts.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-switch/bootstrap-switch.min.js"></script>
+  <script type="text/javascript" src="kango-ui/kango_api.js"></script>
+  <script type="text/javascript" src="res/features/allSettings.js"></script>
+  <script type="text/javascript" src="options.js"></script>
 </body>
+
 </html>
