@@ -50,7 +50,7 @@
 				dropdown.insertBefore(input, list[0]);
 				var label = document.createElement("label");
 				label.setAttribute("for", "autocomplete-move-money");
-				label.innerHTML = "Search:";
+				label.innerHTML = (ynabToolKit.l10nData && ynabToolKit.l10nData["toolkit.search"]) || "Search:";
 				label.id = "autocomplete-label";
 				dropdown.insertBefore(label, input);
 				input.focus();
@@ -83,15 +83,6 @@
 					}
 				}
 				setTimeout(autoCompleteRemoved, 250);
-			}
-
-			function autoCompleteFocus() {
-				var selectLabel = document
-						.getElementsByClassName("ynab-select")[0];
-				selectLabel.className += " autocomplete-focus";
-				selectLabel.onfocus = function(event) {
-					event.target.click();
-				}
 			}
 
 			function autoCompleteHandleKeyPress(oldVal, newVal) {
@@ -147,24 +138,16 @@
 					var selectLabel = document
 							.getElementsByClassName("ynab-select-label")[0];
 					if (selectLabel != undefined) {
-						selectLabel.className = "ynab-select-label";
+						$(selectLabel).removeClass('autocomplete-override');
 					}
+					originalentries = null;
 				} else {
 					setTimeout(autoCompleteRemoved, 250);
 				}
 			}
 
-			function autoCompleteSelectOption(target) {
-				target.click();
-			}
-
 			this.invoke = function() {
 				var dialog = document.getElementsByClassName('ynab-select-options');
-				var label = document.getElementsByClassName('ynab-select-label');
-				var focus = document.getElementsByClassName('autocomplete-focus');
-				if (label.length > 0 && focus.length == 0) {
-					autoCompleteFocus();
-				}
 				if (dialog.length > 0) {
 					autoCompleteApply();
 				}

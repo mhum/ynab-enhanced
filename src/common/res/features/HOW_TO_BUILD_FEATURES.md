@@ -4,7 +4,7 @@ How to Build Features
 **Main things to note:**
 
 1. Use plain HTML, JS and CSS
-1. We have a build system in ```/build``` and ```/build.bat``` that generates some files which help keep features contained to their own directories. If you follow the conventions below you'll find this makes life easy.
+1. We have a build system in ```build``` and ```build.bat``` that generates some files which help keep features contained to their own directories. If you follow the conventions below you'll find this makes life easy.
 1. There is a single [Mutation Observer](https://developer.mozilla.org/en/docs/Web/API/MutationObserver) that is available for you to hook into in order to watch for DOM changes and do what you want to do. We'll talk about how you hook into this below.
 1. Every feature must be configurable by users. It can have a default to on if it's very useful for a wide swath of users, but there must always be the ability to turn it off. There are no mandatory features.
 1. The settings and the things they do to get your feature to work when they're turned on are configured in your feature directory.
@@ -207,3 +207,18 @@ There are some common features which have been pulled into a shared library. We 
 These functions / features can be found here: https://github.com/blargity/toolkit-for-ynab/blob/master/src/common/res/features/shared/main.js
 
 Make as much use of these as possible. These are pre-tested and ready to go!
+
+
+Features l10n (or how to make your feature available in other languages)
+------------------------------------------------------------------------
+L10n is done via the [Crowdin service](http://translate.toolkitforynab.com). To add strings for l10n you should be a manager there or ask one of us (@egens, or @blargity) to do it. You should also have CrowdIn API key to use the automation script that pulls down all the translations. Adding new text is done in 4 steps:
+
+- Go to [project settings](https://crowdin.com/project/toolkit-for-ynab/settings#files) and download the source ```en.json``` file.
+- Add your strings in English to it with an identifier for each string, like so: ```"toolkit.hiThere": "Hi there!",``` and upload back into CrowdIn.
+- Localize your strings if you know how to translate them into other languages, or just leave for the community to translate.
+- You'll then need to update Toolkit l10n strings with command ```./get_l10ns CROWDIN_KEY``` from the project root. This will rebuild l10ns, download them, make some edits to downloaded files while moving them around and generate an appropriate ```settings.json``` file for l10n feature.
+- Get translated strings in your feature .js files like so
+```javascript
+((ynabToolKit.l10nData && ynabToolKit.l10nData["toolkit.hiThere"]) || 'DEFAULT')
+```
+- If there's no translation for a string in the user's chosen language they'll see 'DEFAULT' based on the code above.

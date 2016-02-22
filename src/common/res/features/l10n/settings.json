@@ -1,0 +1,196 @@
+{
+    "name": "l10n", 
+    "title": "Localization of YNAB", 
+    "default": "0", 
+    "section": "general", 
+    "type": "select", 
+    "options": [
+        {
+            "name": "Default", 
+            "value": "0"
+        }, 
+        {
+            "name": "Arabic (5%)", 
+            "value": "1"
+        }, 
+        {
+            "name": "Czech (100%)", 
+            "value": "2"
+        }, 
+        {
+            "name": "Danish (100%)", 
+            "value": "3"
+        }, 
+        {
+            "name": "Dutch (37%)", 
+            "value": "4"
+        }, 
+        {
+            "name": "Finnish (100%)", 
+            "value": "5"
+        }, 
+        {
+            "name": "French (31%)", 
+            "value": "6"
+        }, 
+        {
+            "name": "German (39%)", 
+            "value": "7"
+        }, 
+        {
+            "name": "Hungarian (100%)", 
+            "value": "8"
+        }, 
+        {
+            "name": "Icelandic (3%)", 
+            "value": "9"
+        }, 
+        {
+            "name": "Italian (21%)", 
+            "value": "10"
+        }, 
+        {
+            "name": "Norwegian (100%)", 
+            "value": "11"
+        }, 
+        {
+            "name": "Polish (56%)", 
+            "value": "12"
+        }, 
+        {
+            "name": "Portuguese, Brazilian (9%)", 
+            "value": "13"
+        }, 
+        {
+            "name": "Portuguese (21%)", 
+            "value": "14"
+        }, 
+        {
+            "name": "Russian (100%)", 
+            "value": "15"
+        }, 
+        {
+            "name": "Slovenian (1%)", 
+            "value": "16"
+        }, 
+        {
+            "name": "Spanish (38%)", 
+            "value": "17"
+        }, 
+        {
+            "name": "Swedish (18%)", 
+            "value": "18"
+        }
+    ], 
+    "actions": {
+        "11": [
+            "injectScript", 
+            "locales/Norwegian.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "10": [
+            "injectScript", 
+            "locales/Italian.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "13": [
+            "injectScript", 
+            "locales/Portuguese, Brazilian.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "12": [
+            "injectScript", 
+            "locales/Polish.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "15": [
+            "injectScript", 
+            "locales/Russian.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "14": [
+            "injectScript", 
+            "locales/Portuguese.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "17": [
+            "injectScript", 
+            "locales/Spanish.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "16": [
+            "injectScript", 
+            "locales/Slovenian.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "18": [
+            "injectScript", 
+            "locales/Swedish.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "1": [
+            "injectScript", 
+            "locales/Arabic.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "3": [
+            "injectScript", 
+            "locales/Danish.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "2": [
+            "injectScript", 
+            "locales/Czech.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "5": [
+            "injectScript", 
+            "locales/Finnish.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "4": [
+            "injectScript", 
+            "locales/Dutch.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "7": [
+            "injectScript", 
+            "locales/German.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "6": [
+            "injectScript", 
+            "locales/French.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "9": [
+            "injectScript", 
+            "locales/Icelandic.json", 
+            "injectScript", 
+            "main.js"
+        ], 
+        "8": [
+            "injectScript", 
+            "locales/Hungarian.json", 
+            "injectScript", 
+            "main.js"
+        ]
+    }, 
+    "description": "Localization of interface."
+}

@@ -1,5 +1,6 @@
-Toolkit for YNAB
-=============
+<p align="center">
+  <img src="http://i.imgur.com/SJhwBpU.png" alt="Toolkit for YNAB">
+</p>
 
 Toolkit for YNAB is a general purpose YNAB enhancing chrome extension. Have it your way!
 
@@ -10,11 +11,12 @@ ourselves!
 
 This is what the extension can do for you:
 
+- Net Worth Report - Shows you how much your net worth is over time. Includes transactions in tracking accounts.
 - Days of Buffering Calculation - Forecasts how long it'll take to burn through all your available money using averages. We know there's no such thing as an average month, but some people prefer this calculation over the Age of Money calculation.
 - Export all transactions from the current budget in CSV format.
 - Colour Blind Mode - Changes colours of some of the numbers to make the interface easier on people with certain visual disabilities.
 - Make the calculator work like YNAB4. When you press + or - (etc) the calculator moves to the end of the line so your number isn't lost.
-- Printing Improvements: Now when you print your budget it looks good!
+- Printing Improvements: Now when you print your budget or account it looks good!
 - Add a budget category to zero button in the inspector.
 - Hide the Age of Money calculation.
 - Collapse left navigation bar for more screen room
@@ -32,13 +34,23 @@ This is what the extension can do for you:
 - Show your spending pacing mid-month to ensure you're on track to meet your budget. You can enable and disable this setting per budget column by clicking on the value.
 - Make negative numbers anywhere in the application have square corners so they stand out even more.
 - Larger Clickable Area for Icons: Makes the uncleared, cleared and reconciled icons easier to select.
+- Current month indicator to make it easier to see which month is the current month.
 
 All of these are configurable with options in the extension options page.
+
+Installing
+---------------
+The ToolKit is available for Chrome, Firefox, and Safari. The lead platform is Chrome, but we are actively working on making it equal across all three browsers.
+If you don't want to build the extension from the source yourself, you can get it for:
+
+- Chrome on the [Chrome Web Store](https://chrome.google.com/webstore/detail/toolkit-for-ynab/lmhdkkhepllpnondndgpgclfjnlofgjl)
+- Firefox on the [Firefox Add-on Repository](https://addons.mozilla.org/firefox/addon/toolkit-for-ynab/)
+- Safari [on the Safari Extension Gallery](https://safari-extensions.apple.com/details/?id=com.kangoextensions.ynabenhanced-7M68YQDBSE)
 
 Roadmap
 -------
 
-Features under consideration and the general status of the project and roadmap is on [our Trello Board](https://trello.com/b/EzOvXlil/ynab-enhanced-roadmap). Feel free to vote and comment. To suggest new features, please visit the YNAB Forum thread here and comment. Forum user @stephywephy is managing the features there and will make sure it ends up in Trello.
+Features under consideration and the general status of the project and roadmap is on [our Trello Board](https://trello.com/b/EzOvXlil/ynab-enhanced-roadmap). Feel free to vote and comment. To suggest new features, please [visit the YNAB Forum thread here](http://forum.youneedabudget.com/discussion/47568) and comment. Forum user @bluebird8203 is managing the features there and will make sure it ends up in Trello.
 
 Contributions
 -------------
@@ -66,15 +78,6 @@ This extension uses Kango Extensions to provide cross browser support. To build:
 1. Run ```build.bat``` from within the folder you cloned above.
 1. You'll see platform specific output in the ```output``` folder.
 1. Load it into Chrome as an unpacked extension, load it into Firefox via the .xpi file, or load it into Safari using the extension builder.
-
-Installing
----------------
-The ToolKit is available for Chrome, Firefox, and Safari. The lead platform is Chrome, but we are actively working on making it equal across all three browsers.
-If you don't want to build the extension from the source yourself, you can get it for:
-
-- Chrome on the [Chrome Web Store](https://chrome.google.com/webstore/detail/toolkit-for-ynab/lmhdkkhepllpnondndgpgclfjnlofgjl)
-- Firefox on the [Firefox Add-on Repository](https://addons.mozilla.org/firefox/addon/toolkit-for-ynab/)
-- Safari [direct from us](http://toolkitforynab.com/safari-updates/toolkitforynab_latest.safariextz)
 
 Development Methodology
 -----------------------

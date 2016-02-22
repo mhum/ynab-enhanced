@@ -1,5 +1,17 @@
+function applyDarkMode(activate) {
+  if (activate) {
+    $('body').addClass('inverted');
+  } else {
+    $('body').removeClass('inverted');
+  }
+}
+
 KangoAPI.onReady(function() {
 
+  kango.invokeAsync('kango.storage.getItem', 'options.dark-mode', function(data) {
+    applyDarkMode(data);
+  });
+  
   $('#openSettings').click(function() {
 
     // Chrome requires the "tabs" permission to open the options page.
@@ -11,8 +23,22 @@ KangoAPI.onReady(function() {
     } else {
       kango.ui.optionsPage.open();
     }
-    
+
     KangoAPI.closeWindow();
+  });
+
+  $('#reportBug').click(function () {
+
+    // For some reason Safari doesn't like links in popovers.
+    // The other browsers will work with just the link so we don't need to
+    // do anything with them in the click handler.
+    if (kango.browser.getName() == 'safari') {
+      // Open the link.
+      safari.application.activeBrowserWindow.openTab().url = $(this).attr('href');
+
+      // Close the popover.
+      KangoAPI.closeWindow();
+    }
   });
 
   $('#versionNumber').text(kango.getExtensionInfo().version);
