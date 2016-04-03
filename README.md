@@ -11,6 +11,7 @@ ourselves!
 
 This is what the extension can do for you:
 
+- Localisation - Allows you to use YNAB in an ever-growing list of foreign languages.
 - Net Worth Report - Shows you how much your net worth is over time. Includes transactions in tracking accounts.
 - Days of Buffering Calculation - Forecasts how long it'll take to burn through all your available money using averages. We know there's no such thing as an average month, but some people prefer this calculation over the Age of Money calculation.
 - Export all transactions from the current budget in CSV format.
@@ -35,6 +36,9 @@ This is what the extension can do for you:
 - Make negative numbers anywhere in the application have square corners so they stand out even more.
 - Larger Clickable Area for Icons: Makes the uncleared, cleared and reconciled icons easier to select.
 - Current month indicator to make it easier to see which month is the current month.
+- Right click on a transaction when in the Accounts view to display the Edit menu.
+- Add a split transaction keyboard shortcut, so typing "split" into the category input will automatically create a split transaction.
+- Add buttons within the Account view to easily show and hide upcoming and reconciled transactions with one click.
 
 All of these are configurable with options in the extension options page.
 
@@ -45,7 +49,7 @@ If you don't want to build the extension from the source yourself, you can get i
 
 - Chrome on the [Chrome Web Store](https://chrome.google.com/webstore/detail/toolkit-for-ynab/lmhdkkhepllpnondndgpgclfjnlofgjl)
 - Firefox on the [Firefox Add-on Repository](https://addons.mozilla.org/firefox/addon/toolkit-for-ynab/)
-- Safari [on the Safari Extension Gallery](https://safari-extensions.apple.com/details/?id=com.kangoextensions.ynabenhanced-7M68YQDBSE)
+- Safari [on the Safari Extension Gallery](https://safari-extensions.apple.com/details/?id=com.kangoextensions.ynabenhanced-7M68YQDBSE) NOTE: Safari is currently stuck on version 0.3.6 because Apple is still reviewing the update. You can install the latest [from us directly](http://toolkitforynab.com/safari-updates/toolkitforynab_latest.safariextz) but please keep in mind that it won't auto-update.
 
 Roadmap
 -------
@@ -55,7 +59,7 @@ Features under consideration and the general status of the project and roadmap i
 Contributions
 -------------
 
-Contributions are greatly welcomed. If you want to contribute, it's best if you can let us know so we don't double up on effort. You can see what is being worked on and by whom on the roadmap. If you can't find what you want to build on the roadmap, feel free to put a note up on the github issues board to let the team know you're working on something new. When your code is ready, submit a pull request. You can also contact @blarg on the forums.
+Contributions are greatly welcomed. If you want to contribute, it's best if you can let us know so we don't double up on effort. You can see what is being worked on and by whom on the roadmap. If you can't find what you want to build on the roadmap, feel free to put a note up on the github issues board to let the team know you're working on something new. When your code is ready, submit a pull request. You can also contact @blarg on [the YNAB forums](http://forum.youneedabudget.com).
 
 For documentation on how to build a feature, [see the documentation](https://github.com/blargity/toolkit-for-ynab/blob/master/src/common/res/features/HOW_TO_BUILD_FEATURES.md).
 

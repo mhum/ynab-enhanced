@@ -16,7 +16,7 @@ Each feature has its own folder. Please name the folder in a way that's clear wh
 
 Within that folder, there is only one mandatory file for your feature to do something, and that's the file that says what your setting looks like to users called ```settings.json```. You can include as many or as few other files in your feature directory as you require. Feel free to peruse some of the other features for examples.
 
-Many simple like colourblind mode and Hide Age of Money are a single CSS file and the ```settings.json``` file with nothing more. The Reports feature includes Charts.js and a bunch of script. Make it as simple as you can. CSS is always preferred to Javascript if you can achieve what you want that way as it'll perform better and will be 100% consistently applied without relying on logic to reinstate itself as the user moves around the application.
+Many simple features like Colourblind Mode and Hide Age of Money are a single CSS file and the ```settings.json``` file with nothing more. The Reports feature includes Charts.js and a bunch of script. Make it as simple as you can. CSS is always preferred to Javascript if you can achieve what you want that way as it'll perform better and will be 100% consistently applied without relying on logic to reinstate itself as the user moves around the application.
 
 Settings
 --------
@@ -84,6 +84,8 @@ Here's an example for a select setting. The only difference is the ```options```
 }
 ```
 
+Note that values of a select are always strings, which is why the default and actions use the format "0", not 0.
+
 Multiple Settings
 -----------------
 It's also possible to have your single feature expose multiple settings, just put them in an array like so:
@@ -129,7 +131,7 @@ It's also possible to have your single feature expose multiple settings, just pu
 
 How does this Magic Work?
 -------------------------
-There's a [python script](https://github.com/blargity/toolkit-for-ynab/blob/master/populateFeaturesFiles.py) that's invoked as part of the build process. It scans for these files and pulls them all into a single Javascript file, which is included in the extension. This saves us massive amounts of merge conflicts and makes building these features much easier.
+There's a [python script](https://github.com/blargity/toolkit-for-ynab/blob/master/populateFeaturesFiles.py) that's invoked as part of the build process. It scans for these files and pulls them all into a single Javascript file, which is included in the extension. This saves us lots of time avoiding merge conflicts and makes building these features much easier as there's less code to write by hand.
 
 What If I Can't Get My Setting to Work?
 ---------------------------------------
@@ -152,26 +154,27 @@ This is what it looks like:
 // Waits until an external function gives us the all clear that we can run (at /shared/main.js)
 if ( typeof ynabToolKit !== "undefined"  && ynabToolKit.pageReady === true ) {
 
-  ynabToolKit.awesomeFeature = new function ()  {
+  ynabToolKit.awesomeFeature = (function(){
 
     // Supporting functions,
     // or variables, etc
 
-    this.invoke = function() {
-      // Code you expect to run each time your feature needs to update or modify YNAB's state
-    },
+    return {      
+      invoke: function() {
+        // Code you expect to run each time your feature needs to update or modify YNAB's state
+      },
 
-    this.observe = function(changedNodes) {
+      observe: function(changedNodes) {
 
-      if ( changedNodes.has('class-name-of-interest') ) {
-        ynabToolKit.awesomeFeature.invoke();
-        // Call this.invoke() to activate your function if you find any class names
-        // in the set of changed nodes that indicates your function need may need to run.
+        if ( changedNodes.has('class-name-of-interest') ) {
+          ynabToolKit.awesomeFeature.invoke();
+          // Call this.invoke() to activate your function if you find any class names
+          // in the set of changed nodes that indicates your function need may need to run.
+        }
+
       }
-
-    }
-
-  }; // Keep feature functions contained within this object
+    };
+  })(); // Keep feature functions contained within this object
 
   ynabToolKit.awesomeFeature.invoke(); // Run your script once on page load
 
@@ -191,13 +194,7 @@ Let's break it down and talk about the sections.
 
 Mutation Observer Tips
 ----------------------
-If you want to see what's changing, you can use the console to set ```ynabToolKit.debugNodes = true``` in the console, and further changes will get logged.
-
-Here are some examples to help you get started (these work as of January 2016 -- since YNAB controls the app markup, though, they are subject to change without warning):
-
-- ```changedNodes.has('navlinks-budget')``` implies that YNAB has just loaded or left the budget page.
-- ```changedNodes.has('navlinks-accounts')``` implies that YNAB has just loaded or left the "All Accounts" page.
-- ```changedNodes.has('budgets-header')``` notes a change to the budget page header, and may indicate that the user has changed which month's budget they are viewing.
+If you want to see what's changing, you can set ```ynabToolKit.debugNodes = true``` in the console, and further changes will get logged.
 
 
 Shared Library
@@ -222,3 +219,4 @@ L10n is done via the [Crowdin service](http://translate.toolkitforynab.com). To 
 ((ynabToolKit.l10nData && ynabToolKit.l10nData["toolkit.hiThere"]) || 'DEFAULT')
 ```
 - If there's no translation for a string in the user's chosen language they'll see 'DEFAULT' based on the code above.
+- New l10n strings added by YNAB core team can be found in ```ynabToolKit.l10nMissingStrings``` variable in the browser console with YNAB app started and l10n feature enabled. Removed strings aren't counted.
